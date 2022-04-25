@@ -36,6 +36,7 @@ const useFetchRepo = (searchTerm, params, page) => {
   const preSearchTerm = useRef();
 
   useEffect(() => {
+    //if searchTerm or filters change, clean the repos
     dispatch({ type: ACTION.CLEAN });
   }, [searchTerm, params]);
 
@@ -71,18 +72,23 @@ const useFetchRepo = (searchTerm, params, page) => {
       }
     };
 
-    if (preSearchTerm.current === searchTerm && searchTerm) {
-      fetchRepo();
-    } else if (searchTerm) {
-      timer = setTimeout(() => {
+    if (searchTerm) {
+      if (preSearchTerm.current === searchTerm) {
+        //if filters change, no debounce
         fetchRepo();
-      }, 500);
+      } else {
+        //debounce
+        timer = setTimeout(() => {
+          fetchRepo();
+        }, 500);
+      }
     }
 
     preSearchTerm.current = searchTerm;
 
     return () => {
       clearTimeout(timer);
+      //abort previous request
       controller.abort();
     };
   }, [page, params, searchTerm]);

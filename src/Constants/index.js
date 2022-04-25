@@ -5,7 +5,7 @@ export const ACTION = {
   CLEAN: "CLEAN",
   NO_MORE_REPO: "NO_MORE_REPO",
 };
-export const FILTER = {
+export const FILTERS = {
   type: ["all", "public", "private", "forks", "sources", "member"],
   sort: ["created", "updated", "pushed", "full_name"],
   direction: ["asc", "desc"],

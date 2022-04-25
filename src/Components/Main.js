@@ -13,15 +13,18 @@ const Main = ({ states, searchTerm, params, setPage }) => {
     const observe = new IntersectionObserver(
       (entries) => {
         const el = entries[0];
+        //if target element intersects the viewport, then increase the number of pages
         if (el.isIntersecting) {
           setPage((pre) => pre + 1);
           observe.unobserve(el.target);
         }
       },
       {
-        rootMargin: "550px",
+        rootMargin: "600px",
       }
     );
+
+    //observe the target element
     lastnode.current && observe.observe(lastnode.current);
   }, [states.repos, setPage]);
 

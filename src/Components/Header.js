@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import Spinner from "react-bootstrap/Spinner";
 
-import { FILTER } from "../Constants";
+import { FILTERS } from "../Constants";
 
 const Header = ({
   searchTerm,
@@ -25,15 +25,16 @@ const Header = ({
   };
 
   const handleKeypress = (e) => {
+    //ignore press enter
     if (e.charCode === 13) {
       e.preventDefault();
       return;
     }
   };
 
-  const renderFilter = () => {
+  const renderFilters = () => {
     const render = [];
-    for (const [key, array] of Object.entries(FILTER)) {
+    for (const [key, array] of Object.entries(FILTERS)) {
       render.push(
         <Dropdown
           key={key}
@@ -78,8 +79,8 @@ const Header = ({
           />
         </Form>
         <div className="d-flex align-items-center mx-2 mt-2 mt-md-0">
-          <div className="me-2 fw-bolder">Filter</div>
-          {renderFilter()}
+          <div className="me-2 fw-bolder">Filters</div>
+          {renderFilters()}
         </div>
       </Container>
     </Navbar>
