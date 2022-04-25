@@ -1,4 +1,3 @@
-export const TOKEN = "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";
 export const ACTION = {
   LOADING: "LOADING",
   GET_REPOS: "GET_REPO",

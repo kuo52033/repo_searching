@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useRef } from "react";
 import axios from "axios";
 
-import { TOKEN, ACTION } from "../Constants";
+import { ACTION } from "../Constants";
 
 const initialState = {
   repos: [],
@@ -51,10 +51,10 @@ const useFetchRepo = (searchTerm, params, page) => {
           {
             headers: {
               accept: "application/vnd.github.v3+json",
-              authorization: `token ${TOKEN}`,
+              authorization: `token ${process.env.REACT_APP_AUTHTOKEN}`,
             },
             params: {
-              per_page: 20,
+              per_page: 15,
               page,
               ...params,
             },
