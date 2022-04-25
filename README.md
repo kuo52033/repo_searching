@@ -8,3 +8,11 @@
 <p align="center">
   <img src="https://res.cloudinary.com/dhawohjee/image/upload/v1650816775/other/repo.drawio_1_n0t12j.png" />
 </p>
+
+## 啟動
+
+```
+// set up your github personal access token (REACT_APP_AUTHTOKEN) in .env file, otherwise you will get 401 error.
+npm install
+npm run start
+```
